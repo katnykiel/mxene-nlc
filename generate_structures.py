@@ -304,30 +304,36 @@ def get_ordering_names(dir_name, n=2):
 
     # Save the structure to a folder "final_structs" with the name "{ordering}.vasp"
     write_structures_to_folder(
-        "/home/knykiel/projects/mxene-nlc/M2X/final_structs",
+        dir_name,
         structures,
         ordering_names,
     )
 
 
-# load M2X structure
-struct = Structure.from_file("/home/knykiel/projects/mxene-nlc/M2X/M2X_monolayer.vasp")
-structs = generate_structures(struct)
-write_structures_to_folder(
-    "/home/knykiel/projects/mxene-nlc/M2X/stacked_structs", structs
-)
-structs = get_structures_from_folder(
-    "/home/knykiel/projects/mxene-nlc/M2X/stacked_structs"
-)
-unique_structs = remove_redundant_structures(structs)
-write_structures_to_folder(
-    "/home/knykiel/projects/mxene-nlc/M2X/unique_structs", unique_structs
-)
-structs = get_structures_from_folder(
-    "/home/knykiel/projects/mxene-nlc/M2X/unique_structs"
-)
-stable_structs = remove_unstable_structures(structs)
-write_structures_to_folder(
-    "/home/knykiel/projects/mxene-nlc/M2X/stable_structs", stable_structs
-)
-get_ordering_names("/home/knykiel/projects/mxene-nlc/M2X/stable_structs")
+# # load M2X structure
+# struct = Structure.from_file("/home/knykiel/projects/mxene-nlc/M2X/M2X_monolayer.vasp")
+# structs = generate_structures(struct)
+# write_structures_to_folder(
+#     "/home/knykiel/projects/mxene-nlc/M2X/stacked_structs", structs
+# )
+# structs = get_structures_from_folder(
+#     "/home/knykiel/projects/mxene-nlc/M2X/stacked_structs"
+# )
+# unique_structs = remove_redundant_structures(structs)
+# write_structures_to_folder(
+#     "/home/knykiel/projects/mxene-nlc/M2X/unique_structs", unique_structs
+# )
+# structs = get_structures_from_folder(
+#     "/home/knykiel/projects/mxene-nlc/M2X/unique_structs"
+# )
+# stable_structs = remove_unstable_structures(structs)
+# write_structures_to_folder(
+#     "/home/knykiel/projects/mxene-nlc/M2X/stable_structs", stable_structs
+# )
+# get_ordering_names("/home/knykiel/projects/mxene-nlc/M2X/stable_structs")
+
+# rename dft results
+for i, MX in enumerate(["M2X", "M3X2", "M4X3"]):
+    get_ordering_names(
+        f"/home/knykiel/projects/mxene-nlc/{MX}/relaxed_structs", n=(i + 2)
+    )
