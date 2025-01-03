@@ -42,7 +42,6 @@ for KSPACING in KSPACINGS:
         incar_updates = {"ENCUT": ENCUT, "NCORE": 8, "KSPACING": KSPACING}
 
         relax_flow = update_user_incar_settings(relax_flow, incar_updates)
-        # relax_flow = update_user_kpoints_settings(relax_flow, kpoints)
 
         # add the workflow to the launchpad
         wf = flow_to_workflow(relax_flow)

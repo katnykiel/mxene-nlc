@@ -12,6 +12,7 @@ results = store.query(
     {"metadata.tags": {"$in": [f"convergence-testing"]}, "name": "relax 1"}
 )
 
+
 # print the results for debugging
 saved_results = {
     "structures": [],

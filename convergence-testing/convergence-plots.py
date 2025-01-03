@@ -37,7 +37,7 @@ fig.update_layout(
 
 # Write the figure to a png file
 fig.write_image("convergence.png", scale=3)
-# fig.show()
+fig.show()
 
 # Generate a new column which is the difference between the calculated c and 28.7237
 convergence_data["c_diff"] = abs(convergence_data["c"] - 28.7237)
