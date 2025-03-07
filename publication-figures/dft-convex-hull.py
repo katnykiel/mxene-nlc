@@ -23,7 +23,9 @@ docs = list(store.query(
     }
 ))
 
-fig = get_convex_hulls(docs, write_results=False, search_db = False)[0]
+figs, diagrams = get_convex_hulls(docs, write_results=False, search_db = False, return_diagrams=True)
+
+fig = figs[0]
 
 fig.update_layout(get_plot_layout())
 
@@ -39,7 +41,8 @@ fig.update_layout(
         ticks="inside", 
         mirror="allticks", 
         ticklen=6, 
-        tickwidth=1, 
+        tickwidth=1,
+        range=[0.2,0.6], 
         tickcolor='black', 
         minor=dict(ticks="inside", ticklen=3, tickwidth=1, tickcolor='grey')
     ),
@@ -51,6 +54,7 @@ fig.update_layout(
         ticklen=6, 
         tickwidth=1, 
         tickcolor='black', 
+        range=[-0.69,-0.31],
         minor=dict(ticks="inside", ticklen=3, tickwidth=1, tickcolor='grey')
     ),
     font=dict(size=14)
@@ -64,7 +68,7 @@ fig.data[3].name = "MP: Unstable"
 fig.data[4].name = "This Work"
 
 fig.data[2].marker.color = 'rgb(66,66,66)'
-fig.data[4].marker.color = 'rgb(252, 77, 70)'
+fig.data[4].marker.color = 'rgb(99,188,179)'
 
 fig.data = fig.data[0:1] + fig.data[-1:] + fig.data[1:-1]
 
@@ -72,6 +76,6 @@ fig.update_layout(
     font=dict(family="Nirmala UI"),
 )
 
-
+fig.show()
 
 fig.write_image("dft-convex-hull.png",scale=3)
