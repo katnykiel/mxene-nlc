@@ -22,13 +22,13 @@ fig6 = go.Figure()
 
 # Add traces for each dataset as extremely thin bar charts
 fig1.add_trace(go.Bar(x=nb_exp['v'], y=nb_exp['I'], width=10, name='Nb (lit.)'))
-fig1.add_trace(go.Bar(x=nb['v'], y=nb['I'], width=10, name='Nb'))
+fig1.add_trace(go.Bar(x=nb['v'], y=[1]*len(nb['v']), width=10, name='Nb'))
 
 fig2.add_trace(go.Bar(x=v_exp['v'], y=v_exp['I'], width=10, name='V (lit.)'))
-fig2.add_trace(go.Bar(x=v['v'], y=v['I'], width=10, name='V'))
+fig2.add_trace(go.Bar(x=v['v'], y=[1]*len(v['v']), width=10, name='V'))
 
 fig6.add_trace(go.Bar(x=ta_exp['v'], y=ta_exp['I'], width=10, name='Ta (lit.)'))
-fig6.add_trace(go.Bar(x=ta['v'], y=ta['I'], width=10, name='Ta'))
+fig6.add_trace(go.Bar(x=ta['v'], y=[1]*len(ta['v']), width=10, name='Ta'))
 
 # Update layout for each figure
 for fig in [fig1, fig2, fig6]:
@@ -45,18 +45,20 @@ for fig in [fig1, fig2, fig6]:
             mirror=True,
             ticks='inside',
             minor=dict(ticks='inside'),
-            range=[420, 1200]
+            range=[420, 920]
         ),
         yaxis=dict(
             mirror=True,
             ticks='inside',
             minor=dict(ticks='inside'),
-            showticklabels=False
+            showticklabels=False,
+            range=[0, 1.1]
         ),
         xaxis_title='Wavenumber [cm<sup>-1</sup>]',
         yaxis_title='Intensity [AU]',
         legend=dict(x=1, y=0.02, xanchor="right", yanchor="bottom"),
         showlegend=True,
+        bargap=0.01  # Adjust this value to make the bars thinner
     )
 
 
